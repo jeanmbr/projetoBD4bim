@@ -18,7 +18,7 @@ def main_window():
     
     title = ctk.CTkLabel(
         central_container, 
-        text="RANKING DE BRUXAS E MAGOS", 
+        text="✨ RANKING DE BRUXAS E MAGOS ✨", 
         font=("Arial", 32, "bold"),
         text_color="#f0f0f0"
     )
@@ -28,7 +28,7 @@ def main_window():
     buttons_frame.pack(pady=30, padx=150, fill="both", expand=True)
     
     button_config = {
-        "height": 60,
+        "height": 50,
         "font": ("Arial", 18, "bold"),
         "corner_radius": 15
     }
@@ -41,7 +41,7 @@ def main_window():
         command=open_ranking,
         **button_config
     )
-    btn_ranking.pack(pady=20, fill="x", padx=80)
+    btn_ranking.pack(pady=40, fill="x", padx=400)
     
     btn_insert = ctk.CTkButton(
         buttons_frame,
@@ -51,7 +51,7 @@ def main_window():
         command=open_insert_window,
         **button_config
     )
-    btn_insert.pack(pady=20, fill="x", padx=80)
+    btn_insert.pack(pady=20, fill="x", padx=400)
     
     btn_update = ctk.CTkButton(
         buttons_frame,
@@ -61,7 +61,7 @@ def main_window():
         command=open_update_window,
         **button_config
     )
-    btn_update.pack(pady=20, fill="x", padx=80)
+    btn_update.pack(pady=20, fill="x", padx=400)
     
     btn_delete = ctk.CTkButton(
         buttons_frame,
@@ -71,7 +71,7 @@ def main_window():
         command=open_delete_window,
         **button_config
     )
-    btn_delete.pack(pady=20, fill="x", padx=80)
+    btn_delete.pack(pady=20, fill="x", padx=400)
     
     btn_exit = ctk.CTkButton(
         buttons_frame,
@@ -81,7 +81,7 @@ def main_window():
         command=window.quit,
         **button_config
     )
-    btn_exit.pack(pady=20, fill="x", padx=80)
+    btn_exit.pack(pady=20, fill="x", padx=400)
     
     return window
 
