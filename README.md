@@ -63,16 +63,15 @@ graph TD
 ### **Estrutura de Pastas**
 ```
 projetoBD4bim/
-├── 📁 interface/               # Interface gráfica com CustomTkinter
-│   ├── main.py                 # Arquivo principal da aplicação
-│   └── assets/                 # Imagens e ícones da interface
-├── 📁 database/                # Conexão e operações com o MongoDB
-│   └── db_manager.py
-├── 📁 models/                  # Estrutura de dados e classes
-│   └── usuario.py
-├── 📁 controllers/             # Lógica de CRUD e ranking
-│   └── user_controller.py
-└── 📄 README.md
+│
+├── pycache/         # Arquivos compilados automaticamente pelo Python
+│
+├── main.py          # Arquivo principal - executa a aplicação
+├── database.py      # Conexão e operações com o banco MongoDB
+├── view.py          # Interface gráfica desenvolvida com CustomTkinter
+│
+├── LICENSE          # Licença MIT do projeto
+└── README.md        # Documento com informações do projeto
 ```
 
 ---
