@@ -1,7 +1,6 @@
 from pymongo import MongoClient
 from argon2 import PasswordHasher
 
-# Configuração do MongoDB
 try:
     client = MongoClient("mongodb+srv://root:12345@univap.gox6oor.mongodb.net/?retryWrites=true&w=majority&appName=Univap")
     db = client["projetoBD4bim"]
