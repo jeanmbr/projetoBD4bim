@@ -12,7 +12,7 @@
 
 ---
 
-*Um sistema místico que conecta magos e bruxas a um grimório digital, registrando seus feitos, protegendo segredos com criptografia e classificando os mais poderosos em um ranking encantado.*
+*Um sistema místico que conecta magos e bruxas a uma interface digital, registrando pontos, protegendo segredos com criptografia segura e classificando os mais poderosos em um ranking encantado.*
 
 [🪄 **Visão Geral**](#-sobre-o-projeto) • [⚙️ **Tecnologias**](#-tecnologias-utilizadas) • [🏗️ **Arquitetura**](#-arquitetura-do-sistema) • [🚀 **Execução**](#-instalação) • [📚 **Funcionalidades**](#-principais-funcionalidades) • [🧛 **Autores**](#-equipe)
 
