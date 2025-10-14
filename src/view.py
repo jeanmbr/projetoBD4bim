@@ -44,6 +44,23 @@ def upload_image(file_name, size=(300, 400)):
 def main_window():
     window = ctk.CTk()
     window.title("Ranking de Bruxas e Magos")
+    
+    try:
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        project_root = os.path.dirname(current_dir)
+        icon_path = os.path.join(project_root, "assets", "images", "patolino.ico")
+        
+        print(f"Tentando carregar: {icon_path}")
+        print(f"Arquivo existe: {os.path.exists(icon_path)}")
+        
+        if os.path.exists(icon_path):
+            window.iconbitmap(icon_path)
+            print("Ícone patolino.ico carregado com sucesso!")
+        else:
+            print("Arquivo não encontrado!")       
+    except Exception as e:
+        print(f"Erro ao carregar ícone: {e}")
+    
     window.state('zoomed')
     
     main_frame = ctk.CTkFrame(window, fg_color="#2b2b2b")
@@ -70,21 +87,21 @@ def main_window():
     left_frame = ctk.CTkFrame(central_container, fg_color="transparent")
     left_frame.grid(row=2, column=0, sticky="nsew", padx=0, pady=10)
     
-    mago_photo = upload_image("mage.png")
-    if mago_photo:
-        mago_label = ctk.CTkLabel(left_frame, image=mago_photo, text="")
-        mago_label.pack(expand=True)
+    mage_picture = upload_image("mage.png")
+    if mage_picture:
+        mage_label = ctk.CTkLabel(left_frame, image=mage_picture, text="")
+        mage_label.pack(expand=True)
     else:
-        mago_placeholder = ctk.CTkLabel(
+        mage_placeholder = ctk.CTkLabel(
             left_frame, 
             text="🧙‍♂️\nMAGO", 
             font=("Arial", 24, "bold"), 
             text_color="#4CAF50"
         )
-        mago_placeholder.pack(expand=True)
+        mage_placeholder.pack(expand=True)
     
     buttons_frame = ctk.CTkFrame(central_container, fg_color="#3b3b3b")
-    buttons_frame.grid(row=2, column=1, sticky="nsew", padx=50, pady=50)
+    buttons_frame.grid(row=2, column=1, sticky="nsew", padx=100, pady=50)
     
     button_config = {
         "height": 60,
@@ -100,7 +117,7 @@ def main_window():
         command=open_ranking,
         **button_config
     )
-    btn_ranking.pack(pady=20, fill="x", padx=80)
+    btn_ranking.pack(pady=20, fill="x", padx=100)
     
     btn_insert = ctk.CTkButton(
         buttons_frame,
@@ -110,7 +127,7 @@ def main_window():
         command=open_insert_window,
         **button_config
     )
-    btn_insert.pack(pady=20, fill="x", padx=80)
+    btn_insert.pack(pady=20, fill="x", padx=100)
     
     btn_update = ctk.CTkButton(
         buttons_frame,
@@ -120,7 +137,7 @@ def main_window():
         command=open_update_window,
         **button_config
     )
-    btn_update.pack(pady=20, fill="x", padx=80)
+    btn_update.pack(pady=20, fill="x", padx=100)
     
     btn_delete = ctk.CTkButton(
         buttons_frame,
@@ -130,7 +147,7 @@ def main_window():
         command=open_delete_window,
         **button_config
     )
-    btn_delete.pack(pady=20, fill="x", padx=80)
+    btn_delete.pack(pady=20, fill="x", padx=100)
     
     btn_exit = ctk.CTkButton(
         buttons_frame,
@@ -140,23 +157,23 @@ def main_window():
         command=window.quit,
         **button_config
     )
-    btn_exit.pack(pady=20, fill="x", padx=80)
+    btn_exit.pack(pady=20, fill="x", padx=100)
     
     right_frame = ctk.CTkFrame(central_container, fg_color="transparent")
     right_frame.grid(row=2, column=2, sticky="nsew", padx=0)
     
-    bruxa_photo = upload_image("witch.png")
-    if bruxa_photo:
-        bruxa_label = ctk.CTkLabel(right_frame, image=bruxa_photo, text="")
-        bruxa_label.pack(expand=True)
+    witch_picture = upload_image("witch.png")
+    if witch_picture:
+        witch_label = ctk.CTkLabel(right_frame, image=witch_picture, text="")
+        witch_label.pack(expand=True)
     else:
-        bruxa_placeholder = ctk.CTkLabel(
+        witch_placeholder = ctk.CTkLabel(
             right_frame, 
             text="🧙‍♀️\nBRUXA", 
             font=("Arial", 24, "bold"), 
             text_color="#E91E63"
         )
-        bruxa_placeholder.pack(expand=True)
+        witch_placeholder.pack(expand=True)
     
     return window
 
