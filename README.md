@@ -66,21 +66,20 @@ graph TD
 projetoBD4bim/
 │
 ├── src/
-│   ├── main.py          # Arquivo principal - executa a aplicação
-│   ├── database.py      # Conexão e operações com o banco MongoDB
-│   ├── view.py          # Interface gráfica desenvolvida com CustomTkinter
-│   └── __pycache__/     # Arquivos compilados automaticamente pelo Python
+│   ├── __pycache__/      # Arquivos compilados automaticamente pelo Python
+│   ├── database.py       # Conexão e operações com o banco MongoDB
+│   ├── main.py           # Arquivo principal - executa a aplicação
+│   └── view.py           # Interface gráfica desenvolvida com CustomTkInter
 │
 ├── assets/
 │   └── images/
-│       ├── mage.png     # Imagem ilustrativa de mago
-│       └── witch.png    # Imagem ilustrativa de bruxa
+│       ├── mage.png      # Imagem ilustrativa de mago
+│       └── patolino.ico  # Imagem ilustrativa de bruxa
+│       └── witch.png     # Imagem ilustrativa do Patolino
 │
-├── __pycache__/         # Cache principal do projeto
-│
-├── LICENSE              # Licença MIT do projeto
-├── README.md            # Documento com informações do projeto
-└── requirements.txt     # Lista de dependências necessárias
+├── LICENSE               # Licença MIT do projeto
+├── README.md             # Documento com informações do projeto
+└── requirements.txt      # Lista de dependências necessárias
 ```
 
 ---
