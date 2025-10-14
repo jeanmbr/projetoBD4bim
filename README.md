@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🧙‍♀️ Ranking de Bruxas e Magos  
+# 🧙‍♀️ Ranking de Bruxas e Magos 🪄
 
 ### *Códigos, Magia e Mistérios Digitais*
 
@@ -60,18 +60,27 @@ graph TD
     D --> G[Armazenamento Seguro de Dados]
 ```
 
-### **Estrutura de Pastas**
+## 📁 Estrutura do Projeto  
+
 ```
 projetoBD4bim/
 │
-├── pycache/         # Arquivos compilados automaticamente pelo Python
+├── src/
+│   ├── main.py          # Arquivo principal - executa a aplicação
+│   ├── database.py      # Conexão e operações com o banco MongoDB
+│   ├── view.py          # Interface gráfica desenvolvida com CustomTkinter
+│   └── __pycache__/     # Arquivos compilados automaticamente pelo Python
 │
-├── main.py          # Arquivo principal - executa a aplicação
-├── database.py      # Conexão e operações com o banco MongoDB
-├── view.py          # Interface gráfica desenvolvida com CustomTkinter
+├── assets/
+│   └── images/
+│       ├── mage.png     # Imagem ilustrativa de mago
+│       └── witch.png    # Imagem ilustrativa de bruxa
 │
-├── LICENSE          # Licença MIT do projeto
-└── README.md        # Documento com informações do projeto
+├── __pycache__/         # Cache principal do projeto
+│
+├── LICENSE              # Licença MIT do projeto
+├── README.md            # Documento com informações do projeto
+└── requirements.txt     # Lista de dependências necessárias
 ```
 
 ---
@@ -88,20 +97,19 @@ git clone https://github.com/jeanmbr/projetoBD4bim.git
 cd projetoBD4bim
 ```
 
-### **2. Instale as dependências**
+### **2. Acesse o diretório**
 ```bash
-pip install pymongo customtkinter argon2-cffi
+cd projetoBD4bim
 ```
 
-### **3. Configure o Banco de Dados**
-Crie um arquivo `.env` na raiz do projeto com sua **string de conexão MongoDB Atlas**:
-```
-MONGO_URI="sua_string_de_conexao"
+### **3. Instale as dependências**
+```bash
+pip install -r requirements.txt
 ```
 
 ### **4. Execute a aplicação**
 ```bash
-python main.py
+python src/main.py
 ```
 
 ---
