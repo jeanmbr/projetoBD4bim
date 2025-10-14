@@ -1,0 +1,3 @@
+pymongo
+argon2-cffi
+customtkinter
