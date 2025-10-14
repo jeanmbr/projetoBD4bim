@@ -1,9 +1,45 @@
 import customtkinter as ctk
 from tkinter import ttk, messagebox
+from PIL import Image, ImageTk
+import os
+import sys
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, current_dir)
+
 import database as db
 
-ctk.set_appearance_mode("dark")
-ctk.set_default_color_theme("blue")
+def upload_image(file_name, size=(300, 400)):
+    try:
+        dir_base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        image_path = os.path.join(dir_base, "assets", "images", file_name)
+        
+        if not os.path.exists(image_path):
+            print(f"❌ Arquivo não encontrado: {image_path}")
+            return None
+            
+        image = Image.open(image_path)
+        
+        if image.mode != 'RGBA':
+            image = image.convert('RGBA')
+        
+        data = image.getdata()
+        new_data = []
+        
+        for item in data:
+            if item[0] > 200 and item[1] > 200 and item[2] > 200: 
+                new_data.append((255, 255, 255, 0)) 
+            else:
+                new_data.append(item)
+        
+        image.putdata(new_data)
+        image = image.resize(size, Image.Resampling.LANCZOS)
+        
+        return ctk.CTkImage(light_image=image, dark_image=image, size=size)
+        
+    except Exception as e:
+        print(f"❌ Erro ao carregar imagem {file_name}: {e}")
+        return None
 
 def main_window():
     window = ctk.CTk()
@@ -16,19 +52,42 @@ def main_window():
     central_container = ctk.CTkFrame(main_frame, fg_color="transparent")
     central_container.pack(expand=True, fill="both")
     
+    central_container.grid_columnconfigure(0, weight=1)  
+    central_container.grid_columnconfigure(1, weight=2)  
+    central_container.grid_columnconfigure(2, weight=1)  
+    central_container.grid_rowconfigure(0, weight=1)
+    central_container.grid_rowconfigure(1, weight=1)
+    central_container.grid_rowconfigure(2, weight=3)
+    
     title = ctk.CTkLabel(
         central_container, 
         text="✨ RANKING DE BRUXAS E MAGOS ✨", 
         font=("Arial", 32, "bold"),
         text_color="#f0f0f0"
     )
-    title.pack(pady=40)
+    title.grid(row=1, column=0, columnspan=3, pady=40)
+    
+    left_frame = ctk.CTkFrame(central_container, fg_color="transparent")
+    left_frame.grid(row=2, column=0, sticky="nsew", padx=0, pady=10)
+    
+    mago_photo = upload_image("mage.png")
+    if mago_photo:
+        mago_label = ctk.CTkLabel(left_frame, image=mago_photo, text="")
+        mago_label.pack(expand=True)
+    else:
+        mago_placeholder = ctk.CTkLabel(
+            left_frame, 
+            text="🧙‍♂️\nMAGO", 
+            font=("Arial", 24, "bold"), 
+            text_color="#4CAF50"
+        )
+        mago_placeholder.pack(expand=True)
     
     buttons_frame = ctk.CTkFrame(central_container, fg_color="#3b3b3b")
-    buttons_frame.pack(pady=30, padx=150, fill="both", expand=True)
+    buttons_frame.grid(row=2, column=1, sticky="nsew", padx=50, pady=50)
     
     button_config = {
-        "height": 50,
+        "height": 60,
         "font": ("Arial", 18, "bold"),
         "corner_radius": 15
     }
@@ -41,7 +100,7 @@ def main_window():
         command=open_ranking,
         **button_config
     )
-    btn_ranking.pack(pady=40, fill="x", padx=400)
+    btn_ranking.pack(pady=20, fill="x", padx=80)
     
     btn_insert = ctk.CTkButton(
         buttons_frame,
@@ -51,7 +110,7 @@ def main_window():
         command=open_insert_window,
         **button_config
     )
-    btn_insert.pack(pady=20, fill="x", padx=400)
+    btn_insert.pack(pady=20, fill="x", padx=80)
     
     btn_update = ctk.CTkButton(
         buttons_frame,
@@ -61,7 +120,7 @@ def main_window():
         command=open_update_window,
         **button_config
     )
-    btn_update.pack(pady=20, fill="x", padx=400)
+    btn_update.pack(pady=20, fill="x", padx=80)
     
     btn_delete = ctk.CTkButton(
         buttons_frame,
@@ -71,7 +130,7 @@ def main_window():
         command=open_delete_window,
         **button_config
     )
-    btn_delete.pack(pady=20, fill="x", padx=400)
+    btn_delete.pack(pady=20, fill="x", padx=80)
     
     btn_exit = ctk.CTkButton(
         buttons_frame,
@@ -81,7 +140,23 @@ def main_window():
         command=window.quit,
         **button_config
     )
-    btn_exit.pack(pady=20, fill="x", padx=400)
+    btn_exit.pack(pady=20, fill="x", padx=80)
+    
+    right_frame = ctk.CTkFrame(central_container, fg_color="transparent")
+    right_frame.grid(row=2, column=2, sticky="nsew", padx=0)
+    
+    bruxa_photo = upload_image("witch.png")
+    if bruxa_photo:
+        bruxa_label = ctk.CTkLabel(right_frame, image=bruxa_photo, text="")
+        bruxa_label.pack(expand=True)
+    else:
+        bruxa_placeholder = ctk.CTkLabel(
+            right_frame, 
+            text="🧙‍♀️\nBRUXA", 
+            font=("Arial", 24, "bold"), 
+            text_color="#E91E63"
+        )
+        bruxa_placeholder.pack(expand=True)
     
     return window
 
