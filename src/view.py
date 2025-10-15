@@ -553,7 +553,6 @@ def open_delete_window():
         if not validate_fields(entry_user, entry_password):
             messagebox.showerror("Erro", "Todos os campos devem ser preenchidos!")
             return
-        
         if not db.exist_user(username):
             messagebox.showerror("Erro", "Usuário não encontrado!")
             return
@@ -597,4 +596,4 @@ def main():
     window.mainloop()
 
 if __name__ == "__main__":
-    main()
+    main() # 7 anos de azar pra quem colocar a 600° linha
