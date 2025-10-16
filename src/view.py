@@ -87,7 +87,7 @@ def main_window():
     left_frame = ctk.CTkFrame(central_container, fg_color="transparent")
     left_frame.grid(row=2, column=0, sticky="nsew", padx=0, pady=10)
     
-    mage_picture = upload_image("mage.png")
+    mage_picture = upload_image("witch.png")
     if mage_picture:
         mage_label = ctk.CTkLabel(left_frame, image=mage_picture, text="")
         mage_label.pack(expand=True)
@@ -162,7 +162,7 @@ def main_window():
     right_frame = ctk.CTkFrame(central_container, fg_color="transparent")
     right_frame.grid(row=2, column=2, sticky="nsew", padx=0)
     
-    witch_picture = upload_image("witch.png")
+    witch_picture = upload_image("mage.png")
     if witch_picture:
         witch_label = ctk.CTkLabel(right_frame, image=witch_picture, text="")
         witch_label.pack(expand=True)
